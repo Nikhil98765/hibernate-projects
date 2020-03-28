@@ -2,6 +2,7 @@ package com.example.dao;
 
 import com.example.model.Account;
 import com.example.model.Branch;
+import com.example.model.Customer;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -25,8 +26,14 @@ public class AccountDao {
         return criteria.list();
     }
 
-    public void saveOrUpdate(Account account) {
-        getSession().saveOrUpdate(account);
+    public void saveOrUpdate(Double balance, int customer_id, int branch_id) {
+        Account account = new Account();
+        account.setBalance(balance);
+        Customer customer = (Customer) getSession().load(Customer.class, customer_id);
+        Branch branch = (Branch) getSession().load(Branch.class, branch_id);
+        account.setBranch(branch);
+        account.setCustomer(customer);
+        getSession().save(account);
     }
 
     public Account findAccountById(int id) {
@@ -37,4 +44,18 @@ public class AccountDao {
         Account account = (Account) getSession().get(Account.class, id);
         getSession().delete(account);
     }
+
+    public void withdraw(Account account, Double amount){
+        Double accountBalance = account.getBalance();
+        double finalBalance = accountBalance - amount;
+        account.setBalance(finalBalance);
+        getSession().saveOrUpdate(account);
+    }
+    public void deposit(Account account, Double amount){
+        Double accountBalance = account.getBalance();
+        double finalBalance = accountBalance + amount;
+        account.setBalance(finalBalance);
+        getSession().saveOrUpdate(account);
+    }
+
 }

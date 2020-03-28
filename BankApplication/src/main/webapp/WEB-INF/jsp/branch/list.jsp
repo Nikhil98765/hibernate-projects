@@ -17,15 +17,15 @@ pageEncoding="ISO-8859-1"%>
  <table width="100%" border="1">
   <tr>
 
-   <td>Customer ID</td>
-   <td>Customer Name</td>
+   <td>Branch ID</td>
+   <td>Branch Name</td>
 
   </tr>
-  <c:forEach items="${customerlist}" var="customer" >
+  <c:forEach items="${branchlist}" var="branch" >
    <tr>
 
-    <td><c:out value="${customer.idcustomer}"/></td>
-    <td><c:out value="${customer.name}"/></td>
+    <td><c:out value="${branch.idbranch}"/></td>
+    <td><c:out value="${branch.name}"/></td>
 
    </tr>
   </c:forEach>

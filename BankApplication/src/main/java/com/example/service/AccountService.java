@@ -25,8 +25,8 @@ public class AccountService {
         return accountDao.listAllAccounts();
     }
 
-    public void saveOrUpdate(Account account) {
-        accountDao.saveOrUpdate(account);
+    public void saveOrUpdate(Double balance, int customer_id, int branch_id) {
+        accountDao.saveOrUpdate(balance, customer_id, branch_id);
     }
 
     public Account findAccountById(int id) {
@@ -36,4 +36,15 @@ public class AccountService {
     public void deleteAccount(int id) {
         accountDao.deleteAccount(id);
     }
+
+    public void withdraw(Account account , Double amount){
+
+        accountDao.withdraw(account, amount);
+
+    }
+
+    public void deposit(Account account, Double amount){
+        accountDao.deposit(account, amount);
+    }
+
 }

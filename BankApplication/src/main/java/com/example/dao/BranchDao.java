@@ -25,7 +25,9 @@ public class BranchDao {
         return criteria.list();
     }
 
-    public void saveOrUpdate(Branch branch) {
+    public void saveOrUpdate(String name) {
+        Branch branch = new Branch();
+        branch.setName(name);
         getSession().saveOrUpdate(branch);
     }
 
@@ -36,5 +38,10 @@ public class BranchDao {
     public void deleteBranch(int id) {
         Branch branch = (Branch) getSession().get(Branch.class, id);
         getSession().delete(branch);
+    }
+
+    public void update(Branch branch, String name){
+        branch.setName(name);
+        getSession().update(branch);
     }
 }

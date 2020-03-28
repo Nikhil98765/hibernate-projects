@@ -25,7 +25,9 @@ public class CustomerDao {
         return criteria.list();
     }
 
-    public void saveOrUpdate(Customer customer) {
+    public void saveOrUpdate(String name) {
+        Customer customer = new Customer();
+        customer.setName(name);
         getSession().saveOrUpdate(customer);
     }
 
@@ -36,5 +38,10 @@ public class CustomerDao {
     public void deleteCustomer(int id) {
         Customer customer = (Customer) getSession().get(Customer.class, id);
         getSession().delete(customer);
+    }
+
+    public void update(Customer customer, String name){
+        customer.setName(name);
+        getSession().update(customer);
     }
 }

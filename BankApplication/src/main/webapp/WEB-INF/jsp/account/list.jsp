@@ -13,19 +13,22 @@ pageEncoding="ISO-8859-1"%>
 </head>
 <body>
 
+ <a href="/SpringHibernateExample/customer/add">Add new Customer</a>
 
  <table width="100%" border="1">
   <tr>
-
-   <td>Customer ID</td>
-   <td>Customer Name</td>
+   <td>ID</td>
+   <td>balance</td>
+   <td>customer ID</td>
+   <td>branch ID</td>
 
   </tr>
-  <c:forEach items="${customerlist}" var="customer" >
+  <c:forEach items="${accountslist}" var="account" >
    <tr>
-
-    <td><c:out value="${customer.idcustomer}"/></td>
-    <td><c:out value="${customer.name}"/></td>
+    <td><c:out value="${account.idacc}"/></td>
+    <td><c:out value="${account.balance}"/></td>
+    <td><c:out value="${account.branch.getIdbranch()}"/></td>
+    <td><c:out value="${account.customer.getIdcustomer()}"/></td>
 
    </tr>
   </c:forEach>

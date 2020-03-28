@@ -23,8 +23,8 @@ public class CustomerService {
         return customerDao.listAllCustomers();
     }
 
-    public void saveOrUpdate(Customer customer) {
-        customerDao.saveOrUpdate(customer);
+    public void saveOrUpdate(String name) {
+        customerDao.saveOrUpdate(name);
     }
 
     public Customer findCustomerById(int id) {
@@ -33,6 +33,10 @@ public class CustomerService {
 
     public void deleteCustomer(int id) {
         customerDao.deleteCustomer(id);
+    }
+
+    public void update(Customer customer, String name){
+        customerDao.update(customer, name);
     }
 
 }

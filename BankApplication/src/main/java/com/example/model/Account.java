@@ -14,12 +14,29 @@ public class Account {
     @Column(name = "balance")
     private double balance;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "branch_id")
     private Branch branch;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne
     @JoinColumn(name = "customer_id")
     private Customer customer;
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
     public int getIdacc() {
         return idacc;
@@ -37,5 +54,7 @@ public class Account {
         this.balance = balance;
     }
 
-
 }
+
+
+

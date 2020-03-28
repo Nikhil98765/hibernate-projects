@@ -42,5 +42,4 @@ public class Customer {
     public void setAccounts(Set<Account> accounts) {
         this.accounts = accounts;
     }
-
 }

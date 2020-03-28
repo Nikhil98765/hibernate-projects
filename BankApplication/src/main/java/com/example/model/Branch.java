@@ -1,5 +1,7 @@
 package com.example.model;
 
+import org.hibernate.annotations.GeneratorType;
+
 import javax.persistence.*;
 import java.util.Set;
 

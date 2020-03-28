@@ -24,8 +24,8 @@ public class BranchService {
         return branchDao.listAllBranches();
     }
 
-    public void saveOrUpdate(Branch branch) {
-        branchDao.saveOrUpdate(branch);
+    public void saveOrUpdate(String branchName) {
+        branchDao.saveOrUpdate(branchName);
     }
 
     public Branch findBranchById(int id) {
@@ -34,5 +34,9 @@ public class BranchService {
 
     public void deleteBranch(int id) {
         branchDao.deleteBranch(id);
+    }
+
+    public void update(Branch branch, String name){
+        branchDao.update(branch, name);
     }
 }
