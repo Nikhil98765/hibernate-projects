@@ -1,5 +1,6 @@
 package com.example.dao;
 
+import com.example.exceptions.LowBalanceException;
 import com.example.model.Account;
 import com.example.model.Branch;
 import com.example.model.Customer;
@@ -48,8 +49,13 @@ public class AccountDao {
     public void withdraw(Account account, Double amount){
         Double accountBalance = account.getBalance();
         double finalBalance = accountBalance - amount;
+        if(finalBalance<0){
+            throw new LowBalanceException("not having sufficient balance");
+        }else{
         account.setBalance(finalBalance);
         getSession().saveOrUpdate(account);
+        }
+
     }
     public void deposit(Account account, Double amount){
         Double accountBalance = account.getBalance();

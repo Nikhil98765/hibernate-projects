@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import com.example.exceptions.LowBalanceException;
 import com.example.model.Account;
 import com.example.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,12 @@ public class AccountController {
     public ModelAndView withdraw(@PathVariable("id") int id, @RequestParam(value = "amount") Double amount) {
         ModelAndView model = new ModelAndView("account/list");
         Account account = accountService.findAccountById(id);
-        accountService.withdraw(account,amount);
+        try {
+            accountService.withdraw(account, amount);
+        }
+        catch (LowBalanceException e){
+            System.out.println(e.getMessage());
+        }
         return new ModelAndView("/account/list");
     }
 

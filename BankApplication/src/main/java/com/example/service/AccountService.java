@@ -2,6 +2,7 @@ package com.example.service;
 
 import com.example.dao.AccountDao;
 import com.example.dao.BranchDao;
+import com.example.exceptions.LowBalanceException;
 import com.example.model.Account;
 import com.example.model.Branch;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,7 +38,7 @@ public class AccountService {
         accountDao.deleteAccount(id);
     }
 
-    public void withdraw(Account account , Double amount){
+    public void withdraw(Account account , Double amount) throws LowBalanceException {
 
         accountDao.withdraw(account, amount);
 
