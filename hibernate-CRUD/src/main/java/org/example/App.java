@@ -74,7 +74,7 @@ public class App
 
     public static void main( String[] args ) {
 
-        Employee emp = new Employee(1, "Nikhita", "ISE");
+        Employee emp = new Employee(1, "Nikhil", "ISE");
 
 //        create(emp);
 
